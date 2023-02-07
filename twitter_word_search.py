@@ -66,7 +66,6 @@ def output_see(search_word,user,min_fav,from_date,to_date):
                         if variant['bitrate'] == max_bit:
                             medias.append(['video',variant['url'],thumbnailUrl])
                             break
-                        # print('variant')
                         # print(variant)
                         # print(type(variant))
                 # 画像の場合
