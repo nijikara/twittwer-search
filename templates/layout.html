@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/static/css/index.css">
+</head>
+
+  
+<body>
+  <div class="member">
+    <form method="GET" action="/scraping">
+      <p>検索ワード<input type="text" name="word" size="40" ></p>
+      <p>ユーザー名:@<input type="text" name="user" size="40" ></p>
+      <p>いいね数下限<input type="number" name="fav" size="40" ></p>
+      <group class="inline-radio" >
+        <div><input type="radio" name="radio" value="m1" checked><label>1ヶ月</label></div>
+        <div><input type="radio" name="radio" value="m3"><label>3ヶ月</label></div>
+        <div><input type="radio" name="radio" value="m6"><label>半年</label></div>
+        <div><input type="radio" name="radio" value="y1"><label>1年</label></div>
+        <div><input type="radio" name="radio" value="all"><label>全期間</label></div>
+      </group>
+      <button type="submit">出力</button>
+    </form>
+  </div>
+</body>
+
+</html>
