@@ -31,7 +31,7 @@ def output_see(search_word,user,min_fav,from_date,to_date):
     # condition += 'filter:videos '
     # print(user)
     print(condition)
-    #Twitterでスクレイピングを行い特定キーワードの情報を取得
+    #Twitterでスクレイピングを行い特定キーワードの情報を取得 
     scraped_tweets = sntwitter.TwitterSearchScraper(condition).get_items()
     # scraped_tweets = sntwitter.TwitterSearchScraper(str(search) + f' since:{from_date} until:{to_date} ').get_items()
 
