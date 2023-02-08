@@ -23,7 +23,7 @@ def get():
     user = request.args.get("user","")
     word = request.args.get("word","")
     fav = request.args.get("fav","")
-    max_record = request.args.get("max-record","")
+    max_record = int(request.args.get("max-record",""))
     time_span = request.args.get("radio")
     from_date = ''
     # パラメータ確認

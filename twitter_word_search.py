@@ -33,10 +33,14 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
     # print(user)
     print(condition)
     tweet_data = []
+    count = 0
     #Twitterでスクレイピングを行い特定キーワードの情報を取得 
     for tweet in sntwitter.TwitterSearchScraper(condition).get_items():
-        if len(tweet_data) == limit:
+        if count >= limit:
             break
+        count += 1
+        # if count % 100 == 0:
+        #     print(count)
         medias = []
         # メディア取得
         if tweet.media != None:
@@ -58,7 +62,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
                 else:
                     medias.append(['img',media.fullUrl,media.previewUrl])
         viewCount = int(tweet.viewCount or 0)
-        tweet_data.append([len(tweet_data), #連番
+        tweet_data.append([count, #連番
         common.change_time(tweet.date), #日時
         tweet.rawContent.replace('\n','<br>'), #テキスト
         str(tweet.user.displayname), #ツイート主
