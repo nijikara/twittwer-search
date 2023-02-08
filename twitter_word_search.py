@@ -70,10 +70,9 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         tweet.url,
         tweet.likeCount, #いいね
         tweet.retweetCount, #RT
-        int(tweet.viewCount or 0),
+        viewCount, #インプレッション
         str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
-        int(tweet.viewCount or "0"), #いんぷれっしょン
-        int(tweet.viewCount or None), #いんぷれっしょン
+        tweet.replyCount, #リプライ数
         medias
         ])
     print('yomikan')
