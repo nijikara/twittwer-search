@@ -70,6 +70,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         tweet.url,
         tweet.likeCount, #いいね
         tweet.retweetCount, #RT
+        tweet.quoteCount, #引用RT
         viewCount, #インプレッション
         str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
         tweet.replyCount, #リプライ数
