@@ -23,6 +23,7 @@ def get():
     user = request.args.get("user","")
     word = request.args.get("word","")
     fav = request.args.get("fav","")
+    max_record = request.args.get("max-record","")
     time_span = request.args.get("radio")
     from_date = ''
     # パラメータ確認
@@ -35,7 +36,7 @@ def get():
     to_date = today
     print(to_date)
     # 検索
-    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,10000)
+    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,max_record)
     if request.method == 'GET': # GETされたとき
         print('出力')
         sorce = Markup(sorce)

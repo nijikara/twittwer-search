@@ -44,7 +44,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
             for media in tweet.media:
                 # print(media)
                 # 動画の場合
-                if type(media) is sntwitter.Video:
+                if type(media) is sntwitter.Video or type(media) is sntwitter.Gif:
                     thumbnailUrl = media.thumbnailUrl
                     # print(media['variants'])
                     # 最高画質の動画のビットレートを特定
