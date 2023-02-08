@@ -7,6 +7,7 @@ import re
 import datetime
 
 def output_see(search_word,user,min_fav,from_date,to_date,limit):
+    print("0209")
     # condition = 'lang:ja '
     condition = ''
     # 最低いいね数
@@ -32,40 +33,55 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
     # condition += 'filter:videos '
     # print(user)
     print(condition)
-    tweet_data = []
     #Twitterでスクレイピングを行い特定キーワードの情報を取得 
-    for tweet in sntwitter.TwitterSearchScraper(condition).get_items():
-        if len(tweet_data) == limit:
-            break
+    scraped_tweets = sntwitter.TwitterSearchScraper(condition).get_items()
+    # scraped_tweets = sntwitter.TwitterSearchScraper(str(search) + f' since:{from_date} until:{to_date} ').get_items()
+
+    #最初の10ツイートだけを取得し格納
+    sliced_scraped_tweets = itertools.islice(scraped_tweets, limit)
+
+    #データフレームに変換する(欠損部は0にする)
+    df = pd.DataFrame(sliced_scraped_tweets).fillna(0)
+    #ツイート取得
+    tweet_data = []
+    for data in df.iterrows():
         medias = []
+        tweet = data[1]
+        # print(tweet)
+        # print(tweet.rawContent)
+        # print(tweet.renderedContent)
+        # print(tweet.user)
+        # print(tweet.source)
+        # print(tweet.quotedTweet)
         # メディア取得
-        if tweet.media != None:
+        if tweet.media != 0:
             # print(tweet.media)
             for media in tweet.media:
-                # print(media)
                 # 動画の場合
-                if type(media) is sntwitter.Video:
-                    thumbnailUrl = media.thumbnailUrl
+                if 'variants' in media:
+                    thumbnailUrl = media['thumbnailUrl']
                     # print(media['variants'])
                     # 最高画質の動画のビットレートを特定
-                    max_bit = max([int(dct.bitrate or 0) for dct in media.variants])
+                    max_bit = max([int(dct['bitrate'] or 0) for dct in media['variants']])
                     # 最高画質の動画を格納
-                    for variant in media.variants:
-                        if variant.bitrate == max_bit:
-                            medias.append(['video',variant.url,thumbnailUrl])
+                    for variant in media['variants']:
+                        if variant['bitrate'] == max_bit:
+                            medias.append(['video',variant['url'],thumbnailUrl])
                             break
+                        # print(variant)
+                        # print(type(variant))
                 # 画像の場合
                 else:
-                    medias.append(['img',media.fullUrl,media.previewUrl])
-        viewCount = int(tweet.viewCount or 0)
-        tweet_data.append([len(tweet_data), #連番
+                    medias.append(['img',media['fullUrl'],media['previewUrl']])
+        viewCount = int(tweet.viewCount)
+        tweet_data.append([data[0] + 1, #連番
         common.change_time(tweet.date), #日時
         tweet.rawContent.replace('\n','<br>'), #テキスト
-        str(tweet.user.displayname), #ツイート主
+        str(tweet.user['displayname']), #ツイート主
         tweet.url,
         tweet.likeCount, #いいね
         tweet.retweetCount, #RT
-        int(tweet.viewCount or 0),
+        int(tweet.viewCount),
         str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
         # int(tweet.viewCount or "0"), #いんぷれっしょン
         # int(tweet.viewCount or None), #いんぷれっしょン

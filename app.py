@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 from flask import request
 import datetime
-import twitter_word_search
+# import twitter_word_search_0209 as twitter_word_search
+import twitter_word_search_0208 as twitter_word_search
+# import twitter_word_search as twitter_word_search
 from flask import Markup
 from dateutil.relativedelta import relativedelta
 
@@ -32,7 +34,7 @@ def get():
     to_date = today
     print(to_date)
     # 検索
-    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date)
+    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,10000)
     if request.method == 'GET': # GETされたとき
         print('出力')
         sorce = Markup(sorce)
