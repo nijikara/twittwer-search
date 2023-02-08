@@ -44,37 +44,37 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
             print(count)
         medias = []
         # メディア取得
-        # if tweet.media != None:
-        #     # print(tweet.media)
-        #     for media in tweet.media:
-        #         # print(media)
-        #         # 動画の場合
-        #         if type(media) is sntwitter.Video or type(media) is sntwitter.Gif:
-        #             thumbnailUrl = media.thumbnailUrl
-        #             # print(media['variants'])
-        #             # 最高画質の動画のビットレートを特定
-        #             max_bit = max([int(dct.bitrate or 0) for dct in media.variants])
-        #             # 最高画質の動画を格納
-        #             for variant in media.variants:
-        #                 if variant.bitrate == max_bit:
-        #                     medias.append(['video',variant.url,thumbnailUrl])
-        #                     break
-        #         # 画像の場合
-        #         else:
-        #             medias.append(['img',media.fullUrl,media.previewUrl])
-        # viewCount = int(tweet.viewCount or 0)
+        if tweet.media != None:
+            # print(tweet.media)
+            for media in tweet.media:
+                # print(media)
+                # 動画の場合
+                if type(media) is sntwitter.Video or type(media) is sntwitter.Gif:
+                    thumbnailUrl = media.thumbnailUrl
+                    # print(media['variants'])
+                    # 最高画質の動画のビットレートを特定
+                    max_bit = max([int(dct.bitrate or 0) for dct in media.variants])
+                    # 最高画質の動画を格納
+                    for variant in media.variants:
+                        if variant.bitrate == max_bit:
+                            medias.append(['video',variant.url,thumbnailUrl])
+                            break
+                # 画像の場合
+                else:
+                    medias.append(['img',media.fullUrl,media.previewUrl])
+        viewCount = int(tweet.viewCount or 0)
         tweet_data.append([count, #連番
         common.change_time(tweet.date), #日時
-        tweet.rawContent.replace('\n','<br>') #テキスト
-        # str(tweet.user.displayname), #ツイート主
-        # tweet.url,
-        # tweet.likeCount, #いいね
-        # tweet.retweetCount, #RT
-        # int(tweet.viewCount or 0),
-        # str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
-        # int(tweet.viewCount or "0"), #いんぷれっしょン
-        # int(tweet.viewCount or None), #いんぷれっしょン
-        # medias
+        tweet.rawContent.replace('\n','<br>'), #テキスト
+        str(tweet.user.displayname), #ツイート主
+        tweet.url,
+        tweet.likeCount, #いいね
+        tweet.retweetCount, #RT
+        int(tweet.viewCount or 0),
+        str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
+        int(tweet.viewCount or "0"), #いんぷれっしょン
+        int(tweet.viewCount or None), #いんぷれっしょン
+        medias
         ])
     print('yomikan')
     sorce = ''
@@ -111,6 +111,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         sorce += '</tr>'
     sorce += '</table>'
     sorce += f'{start}'
+    sorce += '<br>'
     sorce += f'{datetime.datetime.now()}'
     print(datetime.datetime.now())
     return sorce
