@@ -35,6 +35,9 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
     print(condition)
     tweet_data = []
     count = 0
+    # ユーザーを指定して検索する場合↓
+    # for tweet in sntwitter.TwitterUserScraper('minoru4160').get_items():
+
     #Twitterでスクレイピングを行い特定キーワードの情報を取得 
     for tweet in sntwitter.TwitterSearchScraper(condition).get_items():
         if count >= limit:
@@ -110,8 +113,8 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
             sorce += '</td>'
         sorce += '</tr>'
     sorce += '</table>'
-    sorce += f'{start}'
-    sorce += '<br>'
-    sorce += f'{datetime.datetime.now()}'
+    # sorce += f'{start}'
+    # sorce += '<br>'
+    # sorce += f'{datetime.datetime.now()}'
     print(datetime.datetime.now())
     return sorce

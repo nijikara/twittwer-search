@@ -2,26 +2,59 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="/static/css/index.css">
 </head>
-
-  
+<style>
+.radiobutton {
+  display: inline-block;
+}
+#label-radio {
+  background-color: skyblue;
+  padding: 10px 20px;
+  color: #fff;
+}
+.radiobutton:checked + #label-radio {
+  background-color: pink;
+}
+/* ボタンCSS */
+.btn--orange,
+button.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+button.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+/*  */
+</style>
 <body>
-  <div class="member">
+    <div class="container-left mx-2" >
     <form method="GET" action="/scraping">
-      <p>検索ワード<input type="text" name="word" size="40" ></p>
-      <p>ユーザー名:@<input type="text" name="user" size="40" ></p>
-      <p>いいね数下限<input type="number" name="fav" size="40" ></p>
-      <p>取得ツイート数<input type="number" name="max-record" size="40" value="1000"></p>
-      <group class="inline-radio" >
-        <div><input type="radio" name="radio" value="m1" checked><label>1ヶ月</label></div>
-        <div><input type="radio" name="radio" value="m3"><label>3ヶ月</label></div>
-        <div><input type="radio" name="radio" value="m6"><label>半年</label></div>
-        <div><input type="radio" name="radio" value="y1"><label>1年</label></div>
-        <div><input type="radio" name="radio" value="all"><label>全期間</label></div>
-      </group>
-      <button type="submit">出力</button>
+      <label for="name" class="col-md-2 control-label">検索ワード</label>
+      <input type="text" class="form-control col-md-2"  name="word" size="40" >
+      <!-- <label for="name" class="col-md-2 control-label">ユーザー名</label>
+      <input type="text" class="form-control col-md-2" name="user" size="40"  placeholder="@"> -->
+      <label for="name" class="col-md-2 control-label">いいね数下限</label>
+      <input type="number" class="form-control col-md-2" name="fav" size="40" >
+      <label for="name" class="col-md-2 control-label">取得ツイート数</label>
+      <input type="number" class="form-control col-md-2" name="max-record" size="40" value="1000">
+      <div class="radio-inline">
+        <input id="radio1" class="radiobutton" name="radio" type="radio" value="m1" checked/>
+        <label id = "label-radio" for="radio1">1ヶ月</label>
+        <input id="radio2" class="radiobutton" name="radio" type="radio" value="m3" />
+        <label id = "label-radio" for="radio2">3ヶ月</label> 
+        <input id="radio3" class="radiobutton" name="radio" type="radio" value="m6" />
+        <label id = "label-radio" for="radio3">半年</label>
+        <input id="radio4" class="radiobutton" name="radio" type="radio" value="y1" />
+        <label id = "label-radio" for="radio4">1年</label>
+        <input id="radio5" class="radiobutton" name="radio" type="radio" value="all" />
+        <label id = "label-radio" for="radio5">全期間</label>
+      </div>
+      <button type="submit" class="btn btn--orange">出力</button>
     </form>
   </div>
 </body>
