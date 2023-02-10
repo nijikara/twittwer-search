@@ -44,6 +44,7 @@ $(document).ready(function() {
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
+    {{now}}<br>{{end}}
 <div class="card-body">
     <table id="fav-table" class="table table-bordered">
         <thead><tr><th>ID</th><th id="date">日時</th><th>ツイート</th><th>ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
@@ -63,9 +64,9 @@ $(document).ready(function() {
                                     <img src="{{media[2]}}" height="100">
                                 </a>
                             {% elif media[0] =='quot' %} 
-                                <blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">
+                                <!-- <blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">
                                     <a href="{{media[1]}}"></a>
-                                </blockquote>
+                                </blockquote> -->
                                 
                             {% endif %}
                         {% endfor %}
@@ -77,7 +78,6 @@ $(document).ready(function() {
             </tr>
             {% endfor %}
     </table>
-    {{now}}<br>{{end}}
     </div>
 </body>
 </html>

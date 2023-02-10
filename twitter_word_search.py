@@ -6,8 +6,7 @@ import common
 import re
 import datetime
 
-def output_see(search_word,user,min_fav,from_date,to_date,limit):
-    start = datetime.datetime.now()
+def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
     # condition = 'lang:ja '
     condition = ''
     # 最低いいね数
@@ -25,6 +24,11 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         for word in re.split('\s', search_word):
             condition += f'"{word}" '
         condition += 'OR @i -@i '
+    # 除外ワード
+    if ignore_word != '':
+        # AND条件用処理
+        for word in re.split('\s', ignore_word):
+            condition += f'-"{word}" '
     # 検索ユーザー
     if user != '':
         condition += f'from:{user} '
@@ -47,9 +51,9 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
             print(count)
         medias = []
         # 引用ツイート
-        if tweet.quotedTweet != None:
-            # print(tweet.quotedTweet.content)
-            medias.append(['quot',tweet.quotedTweet.url])
+        # if tweet.quotedTweet != None:
+        #     # print(tweet.quotedTweet.content)
+        #     medias.append(['quot',tweet.quotedTweet.url])
         # # カード
         # if tweet.card != None:
         #     print(tweet.card)
