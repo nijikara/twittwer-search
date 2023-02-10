@@ -14,11 +14,14 @@
 }
 #fav-table th {
     background-color:pink;
-    max-width:500px
+    max-width:200px;
 }
 #fav-table td {
     max-width:500px;
     overflow-wrap: break-word;
+}
+#fav-table th#url{
+    max-width:20px !important
 }
 </style>
 <script>
@@ -36,7 +39,7 @@ $(document).ready(function() {
 <body>
 <div class="card-body">
     <table id="fav-table" class="table table-bordered">
-        <thead><tr><th>ID</th><th sortable>日時</th><th>ツイート</th><th>ツイート主</th><th>URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
+        <thead><tr><th>ID</th><th>日時</th><th>ツイート</th><th>ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
             <th>表示回数</th><th>反応率</th><th>ﾘﾌﾟﾗｲ数</th><th>画像</th></tr></thead>
         {{ sorce }}
     </table>

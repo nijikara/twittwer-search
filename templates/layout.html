@@ -13,7 +13,6 @@
 #label-radio {
   background-color: skyblue;
   padding: 10px 20px;
-  color: #fff;
 }
 .radiobutton:checked + #label-radio {
   background-color: pink;
@@ -26,22 +25,23 @@ button.btn--orange {
 }
 .btn--orange:hover,
 button.btn--orange:hover {
-  color: #fff;
   background: #f56500;
 }
 /*  */
 </style>
 <body>
+
     <div class="container-left mx-2" >
     <form method="GET" action="/scraping">
       <label for="name" class="col-md-2 control-label">検索ワード</label>
-      <input type="text" class="form-control col-md-2"  name="word" size="40" >
+      <input type="text" class="form-control col-md-3"  name="word" size="40" >
       <!-- <label for="name" class="col-md-2 control-label">ユーザー名</label>
-      <input type="text" class="form-control col-md-2" name="user" size="40"  placeholder="@"> -->
+      <input type="text" class="form-control col-md-3" name="user" size="40"  placeholder="@"> -->
       <label for="name" class="col-md-2 control-label">いいね数下限</label>
       <input type="number" class="form-control col-md-2" name="fav" size="40" >
       <label for="name" class="col-md-2 control-label">取得ツイート数</label>
       <input type="number" class="form-control col-md-2" name="max-record" size="40" value="1000">
+      <br>
       <div class="radio-inline">
         <input id="radio1" class="radiobutton" name="radio" type="radio" value="m1" checked/>
         <label id = "label-radio" for="radio1">1ヶ月</label>

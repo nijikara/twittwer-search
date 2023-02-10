@@ -46,6 +46,14 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         if count % 100 == 0:
             print(count)
         medias = []
+        # 引用ツイート
+        if tweet.quotedTweet != None:
+            # print(tweet.quotedTweet.content)
+            medias.append(['quot',tweet.quotedTweet.url])
+        # # カード
+        # if tweet.card != None:
+        #     print(tweet.card)
+        #     medias.append(['quot',tweet.card.url])
         # メディア取得
         if tweet.media != None:
             # print(tweet.media)
@@ -87,22 +95,26 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
         sorce += '<tr>'
         for tweet in tweets:
             sorce += '<td>'
+            # メディア
             if type(tweet) is list:
-                for image in tweet:
-                    if image[0] == 'video':
-                        # print('video')
-                        video = image[1]
-                        thumbnailUrl = image[2]
+                for media in tweet:
+                    # print(media)
+                    if media[0] == 'video':
+                        video = media[1]
+                        thumbnailUrl = media[2]
                         sorce += (f'<a href="{video}" target="_blank">   ')
                         sorce += (f'<video src="{video}" poster="{thumbnailUrl}" height="100">   ')
                         sorce += ('</a>')
-                    else:
-                        # print('image')
-                        image = image[1]
-                        thumbnailUrl = image[2]
-                        sorce += (f'<a href="{image}" target="_blank">   ')
-                        sorce += (f'<img src="{image}" height="100">   ')
+                    elif media[0] == 'img':
+                        media = media[1]
+                        thumbnailUrl = media[2]
+                        sorce += (f'<a href="{media}" target="_blank">   ')
+                        sorce += (f'<img src="{media}" height="100">   ')
                         sorce += ('</a>')
+                    elif media[0] == 'quot':
+                        sorce += ('<blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">')
+                        sorce += (f'<a href="{media[1]}"></a>')
+                        sorce += ('</blockquote>')
             # コメントアウト中Twitter表示
             # elif "https://twitter.com/" in str(tweet):
             #     sorce += ('<blockquote class="twitter-tweet">')
