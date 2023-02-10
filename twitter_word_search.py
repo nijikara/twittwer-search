@@ -65,6 +65,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
                     # print(media['variants'])
                     # 最高画質の動画のビットレートを特定
                     max_bit = max([int(dct.bitrate or 0) for dct in media.variants])
+                    
                     # 最高画質の動画を格納
                     for variant in media.variants:
                         if variant.bitrate == max_bit:
@@ -74,21 +75,37 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit):
                 else:
                     medias.append(['img',media.fullUrl,media.previewUrl])
         viewCount = int(tweet.viewCount or 0)
-        tweet_data.append([count, #連番
-        common.change_time(tweet.date), #日時
-        tweet.rawContent.replace('\n','<br>'), #テキスト
-        str(tweet.user.displayname), #ツイート主
-        tweet.url,
-        tweet.likeCount, #いいね
-        tweet.retweetCount, #RT
-        tweet.quoteCount, #引用RT
-        viewCount, #インプレッション
-        str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
-        tweet.replyCount, #リプライ数
-        medias
-        ])
+
+        # tweet_data.append([count, #連番
+        # common.change_time(tweet.date), #日時
+        # tweet.rawContent.replace('\n','<br>'), #テキスト
+        # str(tweet.user.displayname), #ツイート主
+        # tweet.url,
+        # tweet.likeCount, #いいね
+        # tweet.retweetCount, #RT
+        # tweet.quoteCount, #引用RT
+        # viewCount, #インプレッション
+        # str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
+        # tweet.replyCount, #リプライ数
+        # medias
+        # ])
+        tweet_data.append({'count':count, #連番
+        'date':common.change_time(tweet.date), #日時
+        'content':tweet.rawContent.replace('\n','<br>'), #テキスト
+        # 'content':tweet.rawContent, #テキスト
+        'name':str(tweet.user.displayname), #ツイート主
+        'url':tweet.url,
+        'likeCount':tweet.likeCount, #いいね
+        'retweetCount':tweet.retweetCount, #RT
+        'quoteCount':tweet.quoteCount, #引用RT
+        'viewCount':viewCount, #インプレッション
+        'reaction':str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
+        'replyCount':tweet.replyCount, #リプライ数
+        'medias':medias
+        })
     print('yomikan')
     sorce = ''
+    return tweet_data
     
     for tweets in tweet_data:
         # print(tweets)

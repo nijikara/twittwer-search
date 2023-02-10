@@ -20,6 +20,7 @@ def hello():
 def get():
     # 現在時刻　デバッグ確認用
     print(datetime.datetime.now())
+    now = datetime.datetime.now()
     today = datetime.date.today()
     user = request.args.get("user","")
     word = request.args.get("word","")
@@ -40,8 +41,10 @@ def get():
     sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,max_record)
     if request.method == 'GET': # GETされたとき
         print('出力')
-        sorce = Markup(sorce)
-        return render_template('template.html',sorce = sorce)
+        # sorce = Markup(sorce)
+        end = datetime.datetime.now()
+        # return render_template('template.html',sorce = sorce)
+        return render_template('template.html',sorce = sorce, now = now, end = end)
         
     elif request.method == 'POST': # POSTされたとき
         return 'POST'
