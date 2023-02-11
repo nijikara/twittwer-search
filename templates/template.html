@@ -30,6 +30,14 @@
     padding-top: 4px;
     display: none !important;
 }
+blockquote {
+    position: relative;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    font-style: italic;
+    color: #464646;
+    border: solid 3px #72ccf4;
+}
 </style>
 <script>
 // $(document).ready(function() {$('#fav-table').tablesorter();});
@@ -67,7 +75,10 @@ $(document).ready(function() {
                                 <!-- <blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">
                                     <a href="{{media[1]}}"></a>
                                 </blockquote> -->
-                                引用：{{media[1]}}
+                                <blockquote cite="https://www.huxley.net/bnw/four.html">
+                                    {{media[1]}}
+                                </blockquote>
+                                
                                 
                             {% endif %}
                         {% endfor %}

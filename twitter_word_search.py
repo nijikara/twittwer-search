@@ -53,7 +53,8 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
         # 引用ツイート
         if tweet.quotedTweet != None:
             # print(tweet.quotedTweet.content)
-            medias.append(['quot',tweet.quotedTweet.url])
+            # medias.append(['quot',tweet.quotedTweet.url])
+            medias.append(['quot',tweet.quotedTweet.rawContent])
         # # カード
         # if tweet.card != None:
         #     print(tweet.card)
