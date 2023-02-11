@@ -80,36 +80,36 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
                     medias.append(['img',media.fullUrl,media.previewUrl])
         viewCount = int(tweet.viewCount or 0)
 
-        # tweet_data.append([count, #連番
-        # common.change_time(tweet.date), #日時
-        # tweet.rawContent.replace('\n','<br>'), #テキスト
-        # str(tweet.user.displayname), #ツイート主
-        # tweet.url,
-        # tweet.likeCount, #いいね
-        # tweet.retweetCount, #RT
-        # tweet.quoteCount, #引用RT
-        # viewCount, #インプレッション
-        # str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
-        # tweet.replyCount, #リプライ数
-        # medias
-        # ])
-        tweet_data.append({'count':count, #連番
-        'date':common.change_time(tweet.date), #日時
-        'content':tweet.rawContent.replace('\n','<br>'), #テキスト
-        # 'content':tweet.rawContent, #テキスト
-        'name':str(tweet.user.displayname), #ツイート主
-        'url':tweet.url,
-        'likeCount':tweet.likeCount, #いいね
-        'retweetCount':tweet.retweetCount, #RT
-        'quoteCount':tweet.quoteCount, #引用RT
-        'viewCount':viewCount, #インプレッション
-        'reaction':str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
-        'replyCount':tweet.replyCount, #リプライ数
-        'medias':medias
-        })
+        tweet_data.append([count, #連番
+        common.change_time(tweet.date), #日時
+        tweet.rawContent.replace('\n','<br>'), #テキスト
+        str(tweet.user.displayname), #ツイート主
+        tweet.url,
+        tweet.likeCount, #いいね
+        tweet.retweetCount, #RT
+        tweet.quoteCount, #引用RT
+        viewCount, #インプレッション
+        str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
+        tweet.replyCount, #リプライ数
+        medias
+        ])
+        # tweet_data.append({'count':count, #連番
+        # 'date':common.change_time(tweet.date), #日時
+        # 'content':tweet.rawContent.replace('\n','<br>'), #テキスト
+        # # 'content':tweet.rawContent, #テキスト
+        # 'name':str(tweet.user.displayname), #ツイート主
+        # 'url':tweet.url,
+        # 'likeCount':tweet.likeCount, #いいね
+        # 'retweetCount':tweet.retweetCount, #RT
+        # 'quoteCount':tweet.quoteCount, #引用RT
+        # 'viewCount':viewCount, #インプレッション
+        # 'reaction':str(0 if viewCount == 0 else round(tweet.likeCount / viewCount * 100, 3)) + '%',
+        # 'replyCount':tweet.replyCount, #リプライ数
+        # 'medias':medias
+        # })
     print('yomikan')
     sorce = ''
-    return tweet_data
+    # return tweet_data
     
     for tweets in tweet_data:
         # print(tweets)
@@ -133,9 +133,9 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
                         sorce += (f'<img src="{media}" height="100">   ')
                         sorce += ('</a>')
                     elif media[0] == 'quot':
-                        sorce += ('<blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">')
+                        # sorce += ('<blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">')
                         sorce += (f'<a href="{media[1]}"></a>')
-                        sorce += ('</blockquote>')
+                        # sorce += ('</blockquote>')
             # コメントアウト中Twitter表示
             # elif "https://twitter.com/" in str(tweet):
             #     sorce += ('<blockquote class="twitter-tweet">')
