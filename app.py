@@ -42,7 +42,7 @@ def get():
     sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,max_record,ignore)
     if request.method == 'GET': # GETされたとき
         print('出力')
-        sorce = Markup(sorce)
+        # sorce = Markup(sorce)
         end = datetime.datetime.now()
         # return render_template('template.html',sorce = sorce)
         return render_template('template.html',sorce = sorce, now = now, end = end)

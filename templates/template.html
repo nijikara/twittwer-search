@@ -47,9 +47,37 @@ $(document).ready(function() {
     {{now}}<br>{{end}}
 <div class="card-body">
     <table id="fav-table" class="table table-bordered">
-        <thead><tr><th>ID</th><th>日時</th><th>ツイート</th><th>ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
+        <thead><tr><th>ID</th><th id="date">日時</th><th>ツイート</th><th>ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
             <th>表示回数</th><th>反応率</th><th>ﾘﾌﾟﾗｲ数</th><th>画像</th></tr></thead>
-        {{ sorce }}
+            {% for tweets in sorce %}
+            <tr>
+                {% for tweet in tweets %}
+                    <td>
+                    {% if tweet =='medias' %} 
+                        {% for media in tweets[tweet] %}
+                            {% if media[0] =='video' %}
+                                <a href="{{media[1]}}" target="_blank">
+                                    <video src="{{media[1]}}" poster="{{media[2]}}" height="100">
+                                </a>
+                            {% elif media[0] =='img' %}
+                                <a href="{{media[1]}}" target="_blank">
+                                    <img src="{{media[2]}}" height="100">
+                                </a>
+                            {% elif media[0] =='quot' %} 
+                                <!-- <blockquote class="twitter-tweet"  data-cards="hidden" data-conversation="none">
+                                    <a href="{{media[1]}}"></a>
+                                </blockquote> -->
+                                引用：{{media[1]}}
+                                
+                            {% endif %}
+                        {% endfor %}
+                    {% else %} 
+                        {{tweets[tweet] | safe}}
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
     </table>
     </div>
 </body>
