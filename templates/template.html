@@ -44,7 +44,7 @@ blockquote {
 // $(document).ready(function() {$('#fav-table').tablesorter();});
 $(document).ready(function() {
     var exp = /(\b(https?|ftp|file):\/\/twitter.com[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-    $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'><img  height='20' src='images/logo.png'></a>"));
+    $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'><img  height='20' src='images/logo.svg'></a>"));
     var exp = /(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'>$1</a>"));
     $('#fav-table').tablesorter();
