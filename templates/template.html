@@ -32,18 +32,19 @@
 }
 blockquote {
     position: relative;
-    padding: 10px 25px;
+    padding: 5px 5px;
     box-sizing: border-box;
     font-style: italic;
     color: #464646;
     border: solid 3px #72ccf4;
+    font: 12px/18px Arial,Sans-serif;
 }
 </style>
 <script>
 // $(document).ready(function() {$('#fav-table').tablesorter();});
 $(document).ready(function() {
     var exp = /(\b(https?|ftp|file):\/\/twitter.com[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-    $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'><img  height='20' src='https://kazeniwa.net/penguin/share/images/sns_tw.svg'></a>"));
+    $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'><img  height='20' src='images/logo.png'></a>"));
     var exp = /(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'>$1</a>"));
     $('#fav-table').tablesorter();

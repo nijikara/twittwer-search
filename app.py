@@ -6,10 +6,11 @@ import datetime
 import twitter_word_search as twitter_word_search
 # import twitter_word_search_0210 as twitter_word_search
 
-from flask import Markup
+from flask import Markup, jsonify
 from dateutil.relativedelta import relativedelta
+import glob
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./templates/images')
 
 @app.route('/')
 def hello():
