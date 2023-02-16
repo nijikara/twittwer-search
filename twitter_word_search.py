@@ -6,7 +6,7 @@ import common
 import re
 import datetime
 
-def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
+def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word,only_jp):
     # condition = 'lang:ja '
     condition = ''
     # 最低いいね数
@@ -33,7 +33,8 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word):
     if user != '':
         condition += f'from:{user} '
     else:
-        condition += 'lang:ja '
+        if only_jp == 'on':
+            condition += 'lang:ja '
     # condition += 'filter:videos '
     # print(user)
     print(condition)

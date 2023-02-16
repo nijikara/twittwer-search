@@ -29,6 +29,7 @@ def get():
     fav = request.args.get("fav","")
     max_record = int(request.args.get("max-record",""))
     time_span = request.args.get("radio")
+    only_jp = request.args.get("only-jp")
     from_date = ''
     # パラメータ確認
     print(request.args)
@@ -40,7 +41,7 @@ def get():
     to_date = today
     print(to_date)
     # 検索
-    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,max_record,ignore)
+    sorce = twitter_word_search.output_see(word,user,fav,from_date,to_date,max_record,ignore,only_jp)
     if request.method == 'GET': # GETされたとき
         print('出力')
         # sorce = Markup(sorce)

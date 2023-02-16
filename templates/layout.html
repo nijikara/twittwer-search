@@ -43,7 +43,6 @@ button.btn--orange:hover {
       <input type="number" class="form-control col-md-2" name="fav" size="40" >
       <label for="name" class="col-md-2 control-label">取得ツイート数</label>
       <input type="number" class="form-control col-md-2" name="max-record" size="40" value="1000">
-      <br>
       <div class="radio-inline">
         <input id="radio1" class="radiobutton" name="radio" type="radio" value="m1" checked/>
         <label id = "label-radio" for="radio1">1ヶ月</label>
@@ -55,6 +54,9 @@ button.btn--orange:hover {
         <label id = "label-radio" for="radio4">1年</label>
         <input id="radio5" class="radiobutton" name="radio" type="radio" value="all" />
         <label id = "label-radio" for="radio5">全期間</label>
+      </div>
+      <div class="inline">
+        <label><input type="checkbox" name="only-jp" checked>日本語のみ</label>
       </div>
       <button type="submit" class="btn btn--orange">出力</button>
     </form>

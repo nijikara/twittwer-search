@@ -47,6 +47,11 @@ $(document).ready(function() {
     $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'><img  height='20' src='images/logo.svg'></a>"));
     var exp = /(\b(https?|ftp|file):\/\/t.co[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     $('body').html($('body').html().replace(exp,"<a href='$1' target='_blank'>$1</a>"));
+    var exp = /#+([a-zA-Z0-9亜-熙ぁ-んァ-ヶー-龥朗-鶴.\-_]+)/g;
+    $('body').html($('body').html().replace(exp,"<a href='https://twitter.com/hashtag/$1' target='_blank'>#$1</a>"));
+    // @変換
+    // var exp = /@+([a-zA-Z0-9亜-熙ぁ-んァ-ヶー-龥朗-鶴.\-_]+)/g;
+    // $('body').html($('body').html().replace(exp,"<a href='https://twitter.com/$1' target='_blank'>@$1</a>"));
     $('#fav-table').tablesorter();
 });
 </script>
