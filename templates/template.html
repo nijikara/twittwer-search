@@ -50,8 +50,8 @@ $(document).ready(function() {
     var exp = /#+([a-zA-Z0-9亜-熙ぁ-んァ-ヶー-龥朗-鶴.\-_]+)/g;
     $('body').html($('body').html().replace(exp,"<a href='https://twitter.com/hashtag/$1' target='_blank'>#$1</a>"));
     // @変換
-    // var exp = /@+([a-zA-Z0-9亜-熙ぁ-んァ-ヶー-龥朗-鶴.\-_]+)/g;
-    // $('body').html($('body').html().replace(exp,"<a href='https://twitter.com/$1' target='_blank'>@$1</a>"));
+    var exp = /@+([a-zA-Z0-9\-_]+)/g;
+    $('body').html($('body').html().replace(exp,"<a href='https://twitter.com/$1' target='_blank'>@$1</a>"));
     $('#fav-table').tablesorter();
 });
 </script>

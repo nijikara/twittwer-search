@@ -16,7 +16,7 @@ def output_see(search_word,user,min_fav,from_date,to_date,limit,ignore_word,only
     if from_date != '':
         condition += f'since:{from_date} '
     # デバッグ用
-    # condition += f'since:2022-12-19_12:23:00_JST '
+    # condition += f'since:2023-02-16_12:23:00_JST '
     # condition += f'until:2022-12-19_12:28:00_JST '
     # 検索ワード
     if search_word != '':

@@ -38,6 +38,8 @@ def get():
         from_date = today  - relativedelta(years=int(time_span[1]))
     elif time_span[0] == 'm':
         from_date = today  - relativedelta(months=int(time_span[1]))
+    elif time_span[0] == 'w':
+        from_date = today  - relativedelta(weeks=int(time_span[1]))
     to_date = today
     print(to_date)
     # 検索
