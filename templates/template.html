@@ -26,6 +26,9 @@
 #fav-table th#date{
     max-width:125px !important
 }
+#fav-table th#user-name{
+    max-width:125px !important
+}
 .r-1h8ys4a {
     padding-top: 4px;
     display: none !important;
@@ -61,7 +64,7 @@ $(document).ready(function() {
     <!-- {{now}}<br>{{end}} -->
 <div class="card-body">
     <table id="fav-table" class="table table-bordered">
-        <thead><tr><th>ID</th><th id="date">日時</th><th>ツイート</th><th>ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
+        <thead><tr><th>ID</th><th id="date">日時</th><th>ツイート</th><th id="user-name">ツイート主</th><th id="url">URL</th><th>いいね</th><th>RT</th><th>引用RT</th>
             <th>表示回数</th><th>反応率</th><th>ﾘﾌﾟﾗｲ数</th><th>画像</th></tr></thead>
             {% for tweets in sorce %}
             <tr>
@@ -88,6 +91,8 @@ $(document).ready(function() {
                                 
                             {% endif %}
                         {% endfor %}
+                    {% elif tweet =='name' %} 
+                        <div id = "user-name">{{tweets[tweet] | safe}}</div>
                     {% else %} 
                         {{tweets[tweet] | safe}}
                     {% endif %}
